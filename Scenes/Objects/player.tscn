@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://b4ak55xbi1ofr"]
+
+[ext_resource type="Script" uid="uid://bv8bdttk1bryn" path="res://Scripts/ExtraPlayer.gd" id="1_5uqce"]
+[ext_resource type="Texture2D" uid="uid://bfuys7w57on57" path="res://Assets/Art/Temp Sprites.png" id="2_picsy"]
+[ext_resource type="Script" uid="uid://3pvv2uqveccc" path="res://Scripts/StateMachines/FSM.gd" id="2_xbekk"]
+[ext_resource type="Script" uid="uid://4pn6s07yjj68" path="res://Scripts/StateMachines/Player/idle_state.gd" id="3_5uqce"]
+[ext_resource type="Script" uid="uid://d24ypjqsa2kea" path="res://Scripts/StateMachines/Player/moving_State.gd" id="4_h6i5h"]
+[ext_resource type="Script" uid="uid://5lns43lddubv" path="res://Scripts/StateMachines/Player/attack_state.gd" id="5_y42te"]
+[ext_resource type="Script" uid="uid://cpwrdn6wonbp4" path="res://Scenes/Objects/ScreenShake.gd" id="7_h6i5h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfgsd"]
+atlas = ExtResource("2_picsy")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xbekk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfgsd")
+}],
+"loop": true,
+"name": &"Base",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uqce"]
+atlas = ExtResource("2_picsy")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6i5h"]
+atlas = ExtResource("2_picsy")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvxap"]
+atlas = ExtResource("2_picsy")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y42te"]
+atlas = ExtResource("2_picsy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b04c"]
+atlas = ExtResource("2_picsy")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2i876"]
+atlas = ExtResource("2_picsy")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6odyb"]
+atlas = ExtResource("2_picsy")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2i876"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uqce")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6i5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvxap")
+}],
+"loop": false,
+"name": &"PunchL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y42te")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0b04c")
+}],
+"loop": false,
+"name": &"PunchR",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2i876")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6odyb")
+}],
+"loop": false,
+"name": &"Push",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvxap"]
+size = Vector2(22.000002, 38)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h6i5h"]
+radius = 21.0
+
+[node name="Player" type="CharacterBody2D" unique_id=894159016]
+script = ExtResource("1_5uqce")
+
+[node name="Camera" type="Camera2D" parent="." unique_id=2065687024]
+zoom = Vector2(1.2, 1.2)
+script = ExtResource("7_h6i5h")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="." unique_id=231754796]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_xbekk")
+animation = &"Base"
+
+[node name="Fists" type="AnimatedSprite2D" parent="PlayerSprite" unique_id=938731156]
+position = Vector2(12.666666, 0)
+scale = Vector2(0.85, 0.85)
+sprite_frames = SubResource("SpriteFrames_2i876")
+animation = &"Default"
+
+[node name="AttackArea" type="Area2D" parent="PlayerSprite/Fists" unique_id=710248536]
+
+[node name="AttackCollidor" type="CollisionShape2D" parent="PlayerSprite/Fists/AttackArea" unique_id=165377951]
+position = Vector2(-1.1764708, 0)
+scale = Vector2(0.39215684, 0.39215684)
+shape = SubResource("RectangleShape2D_jvxap")
+disabled = true
+debug_color = Color(0.8039216, 0, 0, 0.41960785)
+
+[node name="Collidor" type="CollisionShape2D" parent="." unique_id=425138282]
+shape = SubResource("CircleShape2D_h6i5h")
+
+[node name="FStateMachine" type="Node" parent="." unique_id=1942407192 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_xbekk")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="FStateMachine" unique_id=123990826]
+script = ExtResource("3_5uqce")
+
+[node name="Moving" type="Node" parent="FStateMachine" unique_id=736448407]
+script = ExtResource("4_h6i5h")
+maxspeed = 160.0
+
+[node name="Attacking" type="Node" parent="FStateMachine" unique_id=1876161116]
+script = ExtResource("5_y42te")
+
+[connection signal="body_entered" from="PlayerSprite/Fists/AttackArea" to="FStateMachine/Attacking" method="_on_attack_area_body_entered"]

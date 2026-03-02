@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://i0if8koxb8og"]
+
+[ext_resource type="Script" uid="uid://6mcxrgevc7te" path="res://Scripts/dummyscript.gd" id="1_cer2a"]
+[ext_resource type="Texture2D" uid="uid://bfuys7w57on57" path="res://Assets/Art/Temp Sprites.png" id="1_juy7i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cer2a"]
+atlas = ExtResource("1_juy7i")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yr0ed"]
+radius = 18.0
+height = 48.0
+
+[node name="Dummy" type="StaticBody2D" unique_id=124585649]
+script = ExtResource("1_cer2a")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=211404900]
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_cer2a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1530829774]
+shape = SubResource("CapsuleShape2D_yr0ed")
+debug_color = Color(0.48065507, 0.562245, 0.48253417, 0.41960785)
