@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://b3vcd4k7uh4sy"]
+
+[ext_resource type="Script" uid="uid://c3grabwcw8iau" path="res://Scenes/resources/weapon_stat.gd" id="1_0by0x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0by0x"]
+
+[resource]
+script = ExtResource("1_0by0x")
+Shape = SubResource("RectangleShape2D_0by0x")
+Damage = 5
+Crit = 8
+holdable = true
+AttackCooldown = 0.1
+BulletLife = 1.0
+BulletSpeed = 200.0
+MeeleeLeft = "PunchL"
+MeeleeRight = "PunchR"
+MeeleeExtra = "Push"
+metadata/_custom_type_script = "uid://c3grabwcw8iau"

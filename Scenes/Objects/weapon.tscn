@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://cq1s3ok33lv0i"]
+
+[ext_resource type="Script" uid="uid://ccb1een6h6e2x" path="res://Scenes/Objects/AttackMain.gd" id="1_4mp76"]
+[ext_resource type="Texture2D" uid="uid://bfuys7w57on57" path="res://Assets/Art/Temp Sprites.png" id="1_58sax"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uqce"]
+atlas = ExtResource("1_58sax")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6i5h"]
+atlas = ExtResource("1_58sax")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvxap"]
+atlas = ExtResource("1_58sax")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y42te"]
+atlas = ExtResource("1_58sax")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b04c"]
+atlas = ExtResource("1_58sax")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2i876"]
+atlas = ExtResource("1_58sax")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6odyb"]
+atlas = ExtResource("1_58sax")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2i876"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uqce")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6i5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvxap")
+}],
+"loop": false,
+"name": &"PunchL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y42te")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0b04c")
+}],
+"loop": false,
+"name": &"PunchR",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2i876")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6odyb")
+}],
+"loop": false,
+"name": &"Push",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvxap"]
+size = Vector2(22.000002, 38)
+
+[node name="AttackArea" type="Area2D" unique_id=736999550]
+scale = Vector2(2, 2)
+script = ExtResource("1_4mp76")
+Shake_Intensity = null
+Shake_Fade = null
+
+[node name="Weapon" type="AnimatedSprite2D" parent="." unique_id=903451138]
+sprite_frames = SubResource("SpriteFrames_2i876")
+animation = &"Default"
+
+[node name="AttackCollidor" type="CollisionShape2D" parent="." unique_id=890395172]
+position = Vector2(-1.1764708, 0)
+scale = Vector2(0.39215684, 0.39215684)
+shape = SubResource("RectangleShape2D_jvxap")
+disabled = true
+debug_color = Color(0.8039216, 0, 0, 0.41960785)
+
+[node name="Cooldown" type="Timer" parent="." unique_id=871075640]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

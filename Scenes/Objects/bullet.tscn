@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c00db2wg142i"]
+
+[ext_resource type="Script" uid="uid://c1kfdb14o8sv2" path="res://Scenes/Objects/bullet.gd" id="1_3cvgi"]
+[ext_resource type="Texture2D" uid="uid://bfuys7w57on57" path="res://Assets/Art/Temp Sprites.png" id="1_cvsuj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cvgi"]
+atlas = ExtResource("1_cvsuj")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hbw2t"]
+radius = 3.0
+
+[node name="Bullet" type="Area2D" unique_id=182520986]
+script = ExtResource("1_3cvgi")
+
+[node name="BulletSprite" type="Sprite2D" parent="." unique_id=1173825080]
+texture = SubResource("AtlasTexture_3cvgi")
+
+[node name="BulletShape2" type="CollisionShape2D" parent="." unique_id=813703107]
+shape = SubResource("CircleShape2D_hbw2t")
+
+[node name="Timer" type="Timer" parent="." unique_id=1021171526]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

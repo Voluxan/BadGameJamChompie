@@ -20,8 +20,8 @@ func Update(_delta:float): # Replace ment for _process
 	var input_dir : Vector2 = Vector2(Input.get_action_strength("Right") - Input.get_action_strength("Left"),Input.get_action_strength("Down") - Input.get_action_strength("Up")).normalized()
 	Move(input_dir, _delta)
 	
-	if Input.is_action_just_pressed("Attack"):
-		state_transition.emit(self, "Attacking")
+	#if Input.is_action_just_pressed("Attack"):
+		#state_transition.emit(self, "Attacking")
 		
 func Move(input_dir : Vector2, _delta):
 
