@@ -25,5 +25,6 @@ func _on_timer_timeout() -> void:
 func _on_area_entered(body: Area2D) -> void:
 	if body.has_method("TakeDamage"):
 		body.TakeDamage(damage, transform, Knockback)
-	queue_free()
+		queue_free()
+	
 	pass # Replace with function body.

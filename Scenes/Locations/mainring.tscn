@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://by3m1h0gcyvtj"]
+
+[ext_resource type="Script" uid="uid://bchiyadt81iyi" path="res://Scripts/BattleRing.gd" id="1_yoo45"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6m17"]
+size = Vector2(704, 608)
+
+[node name="Ring" type="Node2D" unique_id=138944767]
+script = ExtResource("1_yoo45")
+
+[node name="Inner" type="Area2D" parent="." unique_id=634656790]
+
+[node name="Arena" type="CollisionShape2D" parent="Inner" unique_id=1997714006]
+shape = SubResource("RectangleShape2D_t6m17")
+
+[node name="Outer" type="StaticBody2D" parent="." unique_id=1655774653]
+
+[node name="Walls" type="CollisionPolygon2D" parent="Outer" unique_id=1789643347]
+build_mode = 1
+polygon = PackedVector2Array(-392, 344, -392, -344, 392, -344, 392, 344)
+disabled = true
+
+[node name="OuterDetection" type="Area2D" parent="." unique_id=1762572143]
+
+[node name="Walls" type="CollisionPolygon2D" parent="OuterDetection" unique_id=1889052117]
+z_index = 1
+build_mode = 1
+polygon = PackedVector2Array(-376, 328, -376, -328, 376, -328, 376, 328)
+
+[connection signal="body_entered" from="Inner" to="." method="_start_arena"]
+[connection signal="body_entered" from="OuterDetection" to="." method="_near_exit_entered"]
+[connection signal="body_exited" from="OuterDetection" to="." method="_left_exit_region"]

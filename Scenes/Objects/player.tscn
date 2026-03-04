@@ -27,7 +27,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_h6i5h"]
 radius = 21.0
 
-[node name="Player" type="CharacterBody2D" unique_id=894159016]
+[node name="Player" type="CharacterBody2D" unique_id=894159016 groups=["Player"]]
 script = ExtResource("1_5uqce")
 
 [node name="Camera" type="Camera2D" parent="." unique_id=2065687024]
@@ -36,7 +36,7 @@ zoom = Vector2(1.2, 1.2)
 position_smoothing_enabled = true
 script = ExtResource("7_h6i5h")
 
-[node name="AttackArea" parent="." unique_id=736999550 instance=ExtResource("3_2i876")]
+[node name="AttackArea" parent="." unique_id=736999550 groups=["Player"] instance=ExtResource("3_2i876")]
 position = Vector2(36, 0)
 Weapon = ExtResource("8_y42te")
 Shake_Intensity = 5.0
