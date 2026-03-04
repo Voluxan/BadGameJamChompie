@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Humanoids" format=3 uid="uid://bt0n3y8x0r3hb"]
+
+[ext_resource type="Script" uid="uid://c2yeo8bybgy5d" path="res://Scenes/resources/humanoid.gd" id="1_rvvef"]
+
+[resource]
+script = ExtResource("1_rvvef")
+metadata/_custom_type_script = "uid://c2yeo8bybgy5d"

@@ -8,6 +8,7 @@
 script = ExtResource("1_0by0x")
 Shape = SubResource("RectangleShape2D_0by0x")
 Damage = 5
+Knockback = 50
 Crit = 8
 holdable = true
 AttackCooldown = 0.1

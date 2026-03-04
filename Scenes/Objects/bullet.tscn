@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c00db2wg142i"]
 
-[ext_resource type="Script" uid="uid://c1kfdb14o8sv2" path="res://Scenes/Objects/bullet.gd" id="1_3cvgi"]
+[ext_resource type="Script" uid="uid://c1kfdb14o8sv2" path="res://Scripts/bullet.gd" id="1_3cvgi"]
 [ext_resource type="Texture2D" uid="uid://bfuys7w57on57" path="res://Assets/Art/Temp Sprites.png" id="1_cvsuj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3cvgi"]
@@ -21,5 +21,6 @@ shape = SubResource("CircleShape2D_hbw2t")
 
 [node name="Timer" type="Timer" parent="." unique_id=1021171526]
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

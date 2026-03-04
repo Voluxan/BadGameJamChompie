@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cq1s3ok33lv0i" path="res://Scenes/Objects/weapon.tscn" id="3_2i876"]
 [ext_resource type="Script" uid="uid://4pn6s07yjj68" path="res://Scripts/StateMachines/Player/idle_state.gd" id="3_5uqce"]
 [ext_resource type="Script" uid="uid://d24ypjqsa2kea" path="res://Scripts/StateMachines/Player/moving_State.gd" id="4_h6i5h"]
-[ext_resource type="Script" uid="uid://cpwrdn6wonbp4" path="res://Scenes/Objects/ScreenShake.gd" id="7_h6i5h"]
+[ext_resource type="Script" uid="uid://cpwrdn6wonbp4" path="res://Scripts/ScreenShake.gd" id="7_h6i5h"]
 [ext_resource type="Resource" uid="uid://b3vcd4k7uh4sy" path="res://Scenes/resources/fists.tres" id="8_y42te"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dfgsd"]

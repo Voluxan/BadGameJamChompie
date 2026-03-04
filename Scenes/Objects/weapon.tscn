@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cq1s3ok33lv0i"]
 
-[ext_resource type="Script" uid="uid://ccb1een6h6e2x" path="res://Scenes/Objects/AttackMain.gd" id="1_4mp76"]
+[ext_resource type="Script" uid="uid://ccb1een6h6e2x" path="res://Scripts/AttackMain.gd" id="1_4mp76"]
 [ext_resource type="Texture2D" uid="uid://bfuys7w57on57" path="res://Assets/Art/Temp Sprites.png" id="1_58sax"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uqce"]

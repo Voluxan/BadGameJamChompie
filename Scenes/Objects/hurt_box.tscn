@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cnopm8pkr7qo"]
+
+[ext_resource type="Script" uid="uid://blxu247pjbgri" path="res://hurt_box.gd" id="1_1fqtx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mmw05"]
+size = Vector2(44, 49)
+
+[node name="HurtBox" type="Area2D" unique_id=1026715356]
+script = ExtResource("1_1fqtx")
+
+[node name="Shape" type="CollisionShape2D" parent="." unique_id=1474231875]
+shape = SubResource("RectangleShape2D_mmw05")
+debug_color = Color(0.7, 0, 0.011666489, 0.41960785)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

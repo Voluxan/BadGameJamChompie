@@ -6,6 +6,9 @@ extends Area2D
 
 @export var Weapon: WeaponStats 
 
+@export var WeaponSlot1: WeaponStats
+@export var WeaponSlot2: WeaponStats
+
 var Damage : int = 0
 var Left_PLayed := true
 var Combo_Counter : int = 0
@@ -54,6 +57,7 @@ func Attack():
 			instance.speed = Weapon.BulletSpeed
 			instance.life = Weapon.BulletLife
 			instance.damage = Weapon.Damage
+			instance.Knockback = Weapon.Knockback
 			instance.setup(global_transform)
 			get_tree().root.add_child(instance)
 

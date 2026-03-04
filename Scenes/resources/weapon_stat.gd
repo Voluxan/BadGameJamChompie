@@ -7,6 +7,7 @@ class_name WeaponStats
 
 # -- Damage & Type
 @export var Damage: int
+@export var Knockback: int
 @export var Crit: int
 
 @export var DamageType: String
