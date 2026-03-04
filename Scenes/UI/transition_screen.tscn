@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://dr1mfpt3p8lo4"]
+
+[ext_resource type="Script" uid="uid://b2q8dpc24nuue" path="res://Scenes/UI/transition.gd" id="1_1lp7i"]
+[ext_resource type="Shader" uid="uid://jlsg7r7q6j7i" path="res://Assets/Shaders/transition.gdshader" id="1_35naf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1lp7i"]
+shader = ExtResource("1_35naf")
+shader_parameter/progress = 0.0
+shader_parameter/progress2 = 0.0
+shader_parameter/diamondPixelSize = 50.0
+
+[sub_resource type="Animation" id="Animation_35naf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/progress2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1lp7i"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.750000035625]
+}
+
+[sub_resource type="Animation" id="Animation_ygwb0"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.750000035625]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ygwb0"]
+_data = {
+&"RESET": SubResource("Animation_35naf"),
+&"fade_in": SubResource("Animation_1lp7i"),
+&"fade_out": SubResource("Animation_ygwb0")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=796904465]
+script = ExtResource("1_1lp7i")
+
+[node name="TransitionScreen" type="Control" parent="." unique_id=542370876]
+modulate = Color(1, 0, 0, 1)
+z_index = 500
+material = SubResource("ShaderMaterial_1lp7i")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="TransitionScreen" unique_id=1028216151]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionScreen" unique_id=500219007]
+libraries/ = SubResource("AnimationLibrary_ygwb0")

@@ -1,10 +1,11 @@
 extends Node2D
+@onready var transition_screen: CanvasLayer = %TransitionScreen
 
 
 @onready var Walls: CollisionPolygon2D = $Outer/Walls
 var Battling : bool = false
-var Player
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+var Player	
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Interact") and (Battling == true):
 		if Player:
@@ -28,7 +29,6 @@ func _near_exit_entered(body: Node2D) -> void:
 		Player = body
 		print(body.position)
 
-
 func _left_exit_region(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		print("Player left/changed their mind")
@@ -44,13 +44,18 @@ func _start_arena(body: Node2D) -> void:
 	pass # Replace with function body.
 
 func _leave_arena(player, side, pos) -> void:
+	transition_screen.transition("FadeIn")
+	await transition_screen.animation_player.animation_finished
 	match side:
 		"Right":
 			player.position = Vector2(pos.x + 60, pos.y )
 		"Left":
 			player.position = Vector2(pos.x - 60, pos.y )
 		"Up":
-			player.position = Vector2(pos.x , pos.y + 60)
-		"Down":
 			player.position = Vector2(pos.x , pos.y - 60)
-	pass
+		"Down":
+			player.position = Vector2(pos.x , pos.y + 60)
+	
+	transition_screen.transition("FadeOut")
+	Battling = false
+	Walls.set_deferred("disabled", true)

@@ -60,5 +60,7 @@ script = ExtResource("3_5uqce")
 [node name="Moving" type="Node" parent="FStateMachine" unique_id=736448407]
 script = ExtResource("4_h6i5h")
 maxspeed = 220.0
+accel = 12.0
+friction = 10.0
 
 [editable path="AttackArea"]
