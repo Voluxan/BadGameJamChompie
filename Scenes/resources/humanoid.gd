@@ -8,9 +8,12 @@ class_name Humanoids
 # -- | Health & Stuff 
 @export var MaxHealth : int = 100
 @export var Healing : bool = false
+@export var Regen : float = 0.0
 @export var shield : int = 0
 @export var stamina : int = 50
 
 # -- | Extra stuffs
 @export var Knockback : Vector2 = Vector2.ZERO
 @export var KnockbackTimer : float = 0.0
+
+@export var Speed : float = 100.0

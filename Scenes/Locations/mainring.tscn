@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://by3m1h0gcyvtj"]
 
-[ext_resource type="Script" uid="uid://bchiyadt81iyi" path="res://Scripts/BattleRing.gd" id="1_yoo45"]
+[ext_resource type="Script" uid="uid://bchiyadt81iyi" path="res://Scripts/Enviromental/BattleRing.gd" id="1_yoo45"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t6m17"]
 size = Vector2(704, 608)

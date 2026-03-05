@@ -2,24 +2,28 @@ extends CharacterBody2D
  
 @export var Humanoid: Humanoids 
 var HealthPoints : int 
+var StartPos : Vector2
+@onready var brain: NavigationAgent2D = $Brain
 
 var push_dir: Vector2 = Vector2(0, 0)
 var push_strength: float = 0.0
 var push_timer: float = 0.0
+var TargetDir = Vector2.ZERO
 
+@export var accel : float = 5
+@export var friction : float = 8
 func _physics_process(delta: float) -> void:
-	#if Humanoid.KnockbackTimer > 0.0:
-		#velocity 
-		#Humanoid.KnockbackTimer -= delta
-		#if Humanoid.KnockbackTimer <= 0.0:
-			#Humanoid.Knockback = Vector2.ZERO
-			#
-	#velocity = Humanoid.Knockback
-	#move_and_slide()
+	
+	var lerp_weight = delta * (accel if TargetDir else friction)
+	velocity = lerp(velocity, TargetDir * Humanoid.Speed, lerp_weight)
+	
 	push_back(delta)
+	move_and_slide()
+
 
 func _ready() -> void:
 	HealthPoints = Humanoid.MaxHealth
+	StartPos = global_position
 
 func healthFunc(Amount):
 	HealthPoints += Amount
@@ -39,3 +43,8 @@ func push_back(delta: float):
 func GetHit(Amount, Trans, Power):
 	set_push(Vector2.RIGHT.rotated(Trans.get_rotation()), Power, 0.1)
 	healthFunc(Amount)
+
+
+func Wander(WanderDir):
+	TargetDir = WanderDir
+	

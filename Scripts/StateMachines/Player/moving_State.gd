@@ -22,6 +22,9 @@ func Update(_delta:float): # Replace ment for _process
 		Input.get_action_strength("Down") - Input.get_action_strength("Up")
 		).normalized()
 	Move(input_dir, _delta)
+	
+	if Input.is_action_just_pressed("Dash"):
+		state_transition.emit(self, "Dash")
 
 func _physics_process(delta: float) -> void:
 	if isrunning == false:	
@@ -29,7 +32,7 @@ func _physics_process(delta: float) -> void:
 
 	
 func Move(input_dir : Vector2, delta):
-
+	
 	var lerp_weight = delta * (accel if input_dir else friction)
 	player.velocity = lerp(player.velocity, input_dir * maxspeed, lerp_weight)
 

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bfuys7w57on57" path="res://Assets/Art/Temp Sprites.png" id="1_juy7i"]
 [ext_resource type="Resource" uid="uid://bt0n3y8x0r3hb" path="res://Scenes/resources/dummy.tres" id="2_yu2al"]
 [ext_resource type="PackedScene" uid="uid://cnopm8pkr7qo" path="res://Scenes/Objects/hurt_box.tscn" id="3_yr0ed"]
+[ext_resource type="BehaviorTree" uid="uid://cxe18x73kqmgm" path="res://AI/Trees/BaseEnemy.tres" id="5_2xynw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cer2a"]
 atlas = ExtResource("1_juy7i")
@@ -13,9 +14,19 @@ region = Rect2(32, 0, 16, 16)
 radius = 18.0
 height = 48.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yu2al"]
+radius = 19.0
+height = 51.0
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_2xynw"]
+
 [node name="Dummy" type="CharacterBody2D" unique_id=1941078383]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_cer2a")
 Humanoid = ExtResource("2_yu2al")
+accel = 12.0
+friction = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=211404900]
 scale = Vector2(3, 3)
@@ -29,5 +40,12 @@ debug_color = Color(0.48065507, 0.562245, 0.48253417, 0.41960785)
 
 [node name="Shape" parent="HurtBox" index="0" unique_id=1474231875]
 position = Vector2(0, 0.5)
+shape = SubResource("CapsuleShape2D_yu2al")
+
+[node name="Brain" type="NavigationAgent2D" parent="." unique_id=1927850368]
+
+[node name="BTPlayer" type="BTPlayer" parent="." unique_id=216629332]
+behavior_tree = ExtResource("5_2xynw")
+blackboard_plan = SubResource("BlackboardPlan_2xynw")
 
 [editable path="HurtBox"]

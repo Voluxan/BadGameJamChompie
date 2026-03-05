@@ -1,0 +1,30 @@
+[gd_resource type="BehaviorTree" format=3 uid="uid://cxe18x73kqmgm"]
+
+[ext_resource type="Script" uid="uid://dopttnst3paj8" path="res://ai/tasks/PosPicker.gd" id="1_hpc2b"]
+[ext_resource type="Script" uid="uid://cck5akqkhpvbr" path="res://ai/tasks/Wander.gd" id="2_ygwrk"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_kmsfm"]
+
+[sub_resource type="BTComment" id="BTComment_qm3s1"]
+custom_name = "Check for location and wander to it"
+
+[sub_resource type="BTAction" id="BTAction_qm3s1"]
+script = ExtResource("1_hpc2b")
+
+[sub_resource type="BTAction" id="BTAction_k78lx"]
+script = ExtResource("2_ygwrk")
+
+[sub_resource type="BTWait" id="BTWait_k78lx"]
+duration = 2.0
+custom_name = "Cooldown"
+
+[sub_resource type="BTSequence" id="BTSequence_b2hjo"]
+custom_name = "Random Move Sequence"
+children = [SubResource("BTComment_qm3s1"), SubResource("BTAction_qm3s1"), SubResource("BTAction_k78lx"), SubResource("BTWait_k78lx")]
+
+[sub_resource type="BTSelector" id="BTSelector_b2hjo"]
+children = [SubResource("BTSequence_b2hjo")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_kmsfm")
+root_task = SubResource("BTSelector_b2hjo")

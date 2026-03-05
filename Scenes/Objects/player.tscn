@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cq1s3ok33lv0i" path="res://Scenes/Objects/weapon.tscn" id="3_2i876"]
 [ext_resource type="Script" uid="uid://4pn6s07yjj68" path="res://Scripts/StateMachines/Player/idle_state.gd" id="3_5uqce"]
 [ext_resource type="Script" uid="uid://d24ypjqsa2kea" path="res://Scripts/StateMachines/Player/moving_State.gd" id="4_h6i5h"]
-[ext_resource type="Script" uid="uid://cpwrdn6wonbp4" path="res://Scripts/ScreenShake.gd" id="7_h6i5h"]
+[ext_resource type="Script" uid="uid://cpwrdn6wonbp4" path="res://Scripts/Enviromental/ScreenShake.gd" id="7_h6i5h"]
 [ext_resource type="Resource" uid="uid://b3vcd4k7uh4sy" path="res://Scenes/resources/fists.tres" id="8_y42te"]
+[ext_resource type="Script" uid="uid://bvhr386rmrl1f" path="res://Scripts/StateMachines/Player/dash_state.gd" id="9_2i876"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dfgsd"]
 atlas = ExtResource("2_picsy")
@@ -62,5 +63,9 @@ script = ExtResource("4_h6i5h")
 maxspeed = 220.0
 accel = 12.0
 friction = 10.0
+
+[node name="Dash" type="Node" parent="FStateMachine" unique_id=474136986]
+script = ExtResource("9_2i876")
+metadata/_custom_type_script = "uid://cl53iuib5gs3v"
 
 [editable path="AttackArea"]
