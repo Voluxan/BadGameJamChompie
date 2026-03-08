@@ -1,7 +1,7 @@
 [gd_resource type="BehaviorTree" format=3 uid="uid://cxe18x73kqmgm"]
 
-[ext_resource type="Script" uid="uid://dopttnst3paj8" path="res://ai/tasks/PosPicker.gd" id="1_hpc2b"]
-[ext_resource type="Script" uid="uid://cck5akqkhpvbr" path="res://ai/tasks/Wander.gd" id="2_ygwrk"]
+[ext_resource type="Script" uid="uid://dopttnst3paj8" path="res://AI/Tasks/PosPicker.gd" id="1_hpc2b"]
+[ext_resource type="Script" uid="uid://cck5akqkhpvbr" path="res://AI/Tasks/Wander.gd" id="2_ygwrk"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_kmsfm"]
 
